@@ -1,0 +1,9 @@
+import binascii
+
+# Open and read binary file
+with open(r'.eh_fram', 'rb') as f:
+    data = f.read()
+    
+# Convert to hex and print
+hex_data = binascii.hexlify(data).decode('utf-8')
+print(hex_data)

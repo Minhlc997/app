@@ -1,0 +1,8 @@
+
+# Replace 'your-tool' with the actual tool or application that works with .xdata files
+
+your-tool --validate c:\Users\Administrator\Documents\ezyZip\.xdata
+
+# Or, if the tool provides a repair option:
+
+your-tool --repair c:\Users\Administrator\Documents\ezyZip\.xdata

@@ -1,0 +1,47 @@
+import os
+import sys
+import time
+
+class RuntimeError(Exception):
+    pass
+
+def expand_environment_vars(spec):
+    try:
+        return os.path.expandvars(spec)
+    except:
+        raise RuntimeError(f"Error, couldn't runtime expand spec '{spec}'")
+
+def get_temp_path(pid, timestamp):
+    temp_dir = os.environ.get('TEMP')
+    return f"{temp_dir}\\onefile_{pid}_{timestamp}"
+
+def main():
+    try:
+        # Environment variables
+        env_vars = {
+            'PROGRAM': sys.executable,
+            'PROGRAM_BASE': os.path.basename(sys.executable),
+            'PID': os.getpid(),
+            'HOME': os.path.expanduser('~'),
+            'CACHE_DIR': os.getenv('TEMP'),
+            'TIME': int(time.time())
+        }
+
+        # Verify required environment variables
+        for var in ['TEMP', 'HOME']:
+            if not os.getenv(var):
+                raise RuntimeError(f"Required environment variable {var} not set")
+
+        # Setup paths
+        temp_path = get_temp_path(env_vars['PID'], env_vars['TIME'])
+        
+        # Additional runtime checks
+        if not os.path.exists(temp_path):
+            os.makedirs(temp_path)
+            
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()

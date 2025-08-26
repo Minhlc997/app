@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Payment Successful - Apple TV Compatible</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <style>
+      .success-container {
+        text-align: center;
+        padding: 40px;
+      }
+      
+      .success-icon {
+        font-size: 48px;
+        color: #4CAF50;
+        margin-bottom: 20px;
+      }
+      
+      .success-message {
+        color: #32325d;
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+      
+      .success-details {
+        color: #525f7f;
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+      
+      .return-button {
+        background: #6772e5;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        height: 50px;
+        padding: 0 24px;
+        text-decoration: none;
+        display: inline-block;
+        line-height: 50px;
+        transition: all 0.2s ease;
+      }
+      
+      .return-button:hover {
+        background: #5469d4;
+        transform: translateY(-1px);
+      }
+      
+      /* Apple TV optimizations */
+      @media screen and (min-width: 1920px) and (min-height: 1080px) {
+        .success-icon {
+          font-size: 72px;
+        }
+        
+        .success-message {
+          font-size: 36px;
+        }
+        
+        .success-details {
+          font-size: 24px;
+        }
+        
+        .return-button {
+          font-size: 20px;
+          height: 60px;
+          line-height: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sr-root">
+      <div class="sr-main">
+        <div class="success-container">
+          <div class="success-icon">✓</div>
+          <div class="success-message">Payment Successful!</div>
+          <div class="success-details">
+            Thank you for your purchase. Your Pasha original photo order has been confirmed.
+            <br><br>
+            You will receive a confirmation email shortly.
+          </div>
+          <a href="/" class="return-button">Continue Shopping</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

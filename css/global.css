@@ -1,0 +1,297 @@
+/* Global styles for Stripe Checkout with Apple TV optimization */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #32325d;
+  background-color: #f6f9fc;
+  margin: 0;
+  padding: 0;
+  /* Apple TV optimizations */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Apple TV specific optimizations */
+@media screen and (max-width: 1920px) and (max-height: 1080px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+.sr-root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.sr-main {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+  /* Apple TV focus optimizations */
+  position: relative;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  color: #32325d;
+  font-weight: 500;
+  margin: 0 0 20px;
+  font-size: 24px;
+}
+
+h4 {
+  color: #525f7f;
+  font-weight: 400;
+  margin: 0 0 30px;
+  font-size: 16px;
+}
+
+.pasha-image {
+  margin: 0 0 30px;
+}
+
+.pasha-image img {
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form styling with Apple TV focus support */
+form {
+  width: 100%;
+}
+
+.quantity-setter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.increment-btn {
+  background: #6772e5;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  height: 40px;
+  width: 40px;
+  transition: all 0.2s ease;
+  /* Apple TV focus styles */
+  outline: none;
+}
+
+.increment-btn:hover:not(:disabled) {
+  background: #5469d4;
+  transform: translateY(-1px);
+}
+
+.increment-btn:active:not(:disabled) {
+  background: #43458b;
+  transform: translateY(0);
+}
+
+.increment-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Apple TV focus indicators */
+.increment-btn:focus,
+button:focus,
+input:focus {
+  outline: 3px solid #6772e5;
+  outline-offset: 2px;
+}
+
+#quantity-input {
+  border: 1px solid #e6ebf1;
+  border-radius: 4px;
+  font-size: 16px;
+  height: 40px;
+  padding: 0 12px;
+  text-align: center;
+  width: 80px;
+  background: white;
+  transition: border-color 0.2s ease;
+}
+
+#quantity-input:focus {
+  border-color: #6772e5;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(103, 114, 229, 0.2);
+}
+
+.sr-legal-text {
+  color: #8a8a8a;
+  font-size: 14px;
+  margin: 15px 0;
+}
+
+#submit {
+  background: #6772e5;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  height: 50px;
+  margin: 20px 0 0;
+  width: 100%;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+#submit:hover {
+  background: #5469d4;
+  transform: translateY(-1px);
+}
+
+#submit:active {
+  background: #43458b;
+  transform: translateY(0);
+}
+
+#submit:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Apple Pay button styling */
+.apple-pay-button {
+  display: inline-block;
+  -webkit-appearance: -apple-pay-button;
+  -apple-pay-button-type: buy;
+  -apple-pay-button-style: black;
+  width: 100%;
+  height: 50px;
+  margin: 10px 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.apple-pay-button:hover {
+  opacity: 0.8;
+}
+
+.payment-methods {
+  margin: 20px 0;
+}
+
+.payment-divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #8a8a8a;
+  font-size: 14px;
+}
+
+.payment-divider::before,
+.payment-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e6ebf1;
+}
+
+.payment-divider span {
+  padding: 0 15px;
+}
+
+#error-message {
+  color: #fa755a;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Loading state */
+.loading #submit {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.loading #submit::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design for Apple TV and other devices */
+@media (max-width: 600px) {
+  .sr-main {
+    padding: 20px;
+    margin: 0 10px;
+  }
+  
+  h1 {
+    font-size: 20px;
+  }
+}
+
+/* Apple TV specific media query */
+@media screen and (min-width: 1920px) and (min-height: 1080px) {
+  body {
+    font-size: 20px;
+  }
+  
+  .sr-main {
+    max-width: 600px;
+    padding: 60px;
+  }
+  
+  h1 {
+    font-size: 32px;
+  }
+  
+  h4 {
+    font-size: 20px;
+  }
+  
+  .increment-btn,
+  #quantity-input {
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  #submit {
+    height: 60px;
+    font-size: 20px;
+  }
+  
+  .apple-pay-button {
+    height: 60px;
+  }
+}
